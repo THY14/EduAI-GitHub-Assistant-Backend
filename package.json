@@ -2,16 +2,14 @@
   "name": "demo-prisma",
   "version": "0.0.1",
   "description": "EduAI GitHub Assistant - Backend",
-  "author": "",
   "private": true,
-  "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
-    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
-    "start": "npm run build && node dist/main.js",
+    "start": "node dist/main.js",
     "start:dev": "nest start --watch",
-    "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/main.js",
+    "postinstall": "nest build && prisma generate",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -22,8 +20,7 @@
     "prisma:deploy": "prisma migrate deploy",
     "prisma:studio": "prisma studio",
     "prisma:generate": "prisma generate && node scripts/fix-prisma-types.ts",
-    "prisma:seed": "tsx prisma/seed.ts",
-    "postinstall": "prisma generate && nest build"
+    "prisma:seed": "tsx prisma/seed.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
@@ -32,8 +29,10 @@
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
-    "@prisma/adapter-pg": "7.0.0",
+    "@nestjs/cli": "^11.0.0",
+    "typescript": "^5.7.3",
     "@prisma/client": "7.0.0",
+    "@prisma/adapter-pg": "7.0.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
     "pg": "^8.16.3",
@@ -41,9 +40,6 @@
     "rxjs": "^7.8.1"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.2.0",
-    "@eslint/js": "^9.18.0",
-    "@nestjs/cli": "^11.0.0",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.1",
     "@prisma/client-runtime-utils": "^7.0.0",
@@ -66,7 +62,6 @@
     "ts-node": "^10.9.2",
     "tsconfig-paths": "^4.2.0",
     "tsx": "^4.20.6",
-    "typescript": "^5.7.3",
     "typescript-eslint": "^8.20.0"
   },
   "jest": {
