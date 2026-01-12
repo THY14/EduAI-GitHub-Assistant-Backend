@@ -6,4 +6,9 @@ export class AppController {
   getRoot() {
     return { message: 'Hello from Railway!' };
   }
+
+  @Get('favicon.ico')
+  getFavicon() {
+    return '';
+  }
 }
